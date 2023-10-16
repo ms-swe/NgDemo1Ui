@@ -5,6 +5,7 @@ import { Stop } from 'src/app/data-model/stop';
   selector: 'nd-stop-list-item',
   templateUrl: './stop-list-item.component.html',
   styleUrls: ['./stop-list-item.component.css'],
+  standalone: true,
 })
 export class StopListItemComponent {
   @Input() stop?: Stop;

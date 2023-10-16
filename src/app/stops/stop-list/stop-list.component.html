@@ -1,8 +1,6 @@
-<h1>Haltestellen</h1>
+<!-- <input type="search" autocomplete="off" aria-label="Search" #searchInput />
 
-<input type="search" autocomplete="off" aria-label="Search" #searchInput />
-
-<button (click)="searchStops(searchInput.value)">Haltestellen suchen</button>
+<button (click)="searchStops(searchInput.value)">Haltestellen suchen</button> -->
 
 <ul *ngIf="stops$ | async as stops">
   <li *ngFor="let stop of stops">
