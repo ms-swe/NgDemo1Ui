@@ -1,13 +1,14 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'nd-form-errors',
   templateUrl: './form-errors.component.html',
-  styleUrls: ['./form-errors.component.css'],
+  styleUrls: ['./form-errors.component.scss'],
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, MatFormFieldModule],
 })
 export class FormErrorsComponent {
   @Input() controlName?: string;

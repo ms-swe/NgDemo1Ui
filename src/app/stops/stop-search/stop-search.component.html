@@ -1,44 +1,47 @@
-<h2>Suchkriterien</h2>
+<section class="search-criteria">
+  <h2>Suchkriterien</h2>
 
-<form [formGroup]="form" (ngSubmit)="submitForm()">
-  <div formGroupName="criteria">
-    <p>
-      <label for="name">Name der Haltestelle</label>
-      <input id="name" formControlName="name" />
-      <!-- <nd-form-errors
-      controlName="name"
-      [messages]="{ required: 'Name muss angegeben werden' }"
-    ></nd-form-errors> -->
-    </p>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div formGroupName="criteria">
+      <mat-form-field class="form-field">
+        <mat-label for="name">Name der Haltestelle</mat-label>
+        <input matInput id="name" formControlName="name" />
+      </mat-form-field>
 
-    <p>
-      <label for="lon">Länge [WGS 84 Format in Grad]</label>
-      <input id="lon" formControlName="lon" />
-    </p>
+      <mat-form-field class="form-field">
+        <mat-label for="lon">Länge [WGS 84 Format in Grad]</mat-label>
+        <input matInput id="lon" formControlName="lon" />
+      </mat-form-field>
 
-    <p>
-      <label for="lat">Breite [WGS 84 Format in Grad]</label>
-      <input id="lat" formControlName="lat" />
-    </p>
+      <mat-form-field class="form-field">
+        <mat-label for="lat">Breite [WGS 84 Format in Grad]</mat-label>
+        <input matInput id="lat" formControlName="lat" />
+      </mat-form-field>
 
-    <p>
-      <label for="radius">Radius [m]</label>
-      <input id="radius" formControlName="radius" />
-    </p>
-  </div>
+      <mat-form-field class="form-field">
+        <mat-label for="radius">Radius [m]</mat-label>
+        <input matInput id="radius" formControlName="radius" />
+      </mat-form-field>
+    </div>
 
-  <nd-form-errors
-    controlName="criteria"
-    [messages]="{
-      stopsearchcriteriacorrect:
-        'Name oder Länge/Breite/Radius muss angegeben werden'
-    }"
-  ></nd-form-errors>
+    <nd-form-errors
+      controlName="criteria"
+      [messages]="{
+        stopsearchcriteriacorrect:
+          'Name oder Länge/Breite/Radius muss angegeben werden'
+      }"
+    ></nd-form-errors>
 
-  <br />
-
-  <button type="submit" [disabled]="form.invalid">Suchen</button>
-</form>
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      mat-raised-button
+      color="primary"
+    >
+      Suchen
+    </button>
+  </form>
+</section>
 
 <h2>Haltestellen</h2>
 

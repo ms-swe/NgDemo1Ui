@@ -1,11 +1,30 @@
-<nav>
-  <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"
-    >Home</a
-  >
-  <a routerLink="/stops" routerLinkActive="active" ariaCurrentWhenActive="page"
-    >Stops</a
-  >
-</nav>
-<main>
-  <router-outlet> </router-outlet>
-</main>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" routerLinkActive="active">
+        <mat-icon matListIcon>timeline</mat-icon>
+        Startseite
+      </a>
+      <a mat-list-item routerLink="/stops" routerLinkActive="active">
+        <mat-icon matListIcon>settings</mat-icon>
+        Haltestellen
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar class="toolbar" color="primary">
+      <button
+        mat-icon-button
+        aria-label="Menu button"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Ng Demo 1</span>
+    </mat-toolbar>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

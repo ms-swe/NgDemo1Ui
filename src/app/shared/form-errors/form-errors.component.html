@@ -1,4 +1,4 @@
-<div>
-  <p *ngIf="errors.length > 0">Fehler:</p>
-  <li class="error" *ngFor="let error of errors">{{ error }}</li>
-</div>
+<mat-error class="form-errors-area" *ngIf="errors.length > 0">
+  <p class="form-errors-header">Fehler:</p>
+  <li *ngFor="let error of errors">{{ error }}</li>
+</mat-error>

@@ -1,0 +1,15 @@
+// ul {
+//   margin: 0;
+//   padding: 0;
+//   list-style: none;
+// }
+
+// li + li {
+//   margin-top: 1rem;
+// }
+
+.stop-list {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: auto;
+}

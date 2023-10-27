@@ -1,10 +1,13 @@
-<!-- <input type="search" autocomplete="off" aria-label="Search" #searchInput />
-
-<button (click)="searchStops(searchInput.value)">Haltestellen suchen</button> -->
-
-<ul *ngIf="stops$ | async as stops">
+<!-- <ul *ngIf="stops$ | async as stops">
   <li *ngFor="let stop of stops">
     <nd-stop-list-item [stop]="stop"></nd-stop-list-item>
   </li>
   <li *ngIf="!stops.length">Keine Haltestellen gefunden</li>
-</ul>
+</ul> -->
+
+<section class="stop-list" *ngIf="stops$ | async as stops">
+  <div *ngFor="let stop of stops">
+    <nd-stop-list-item [stop]="stop"></nd-stop-list-item>
+  </div>
+  <div *ngIf="!stops.length">Keine Haltestellen gefunden</div>
+</section>

@@ -1,4 +1,22 @@
-<section>
-  <p>{{ stop!.Haltestellenname }}</p>
-  <p>lon={{ stop!.Longitude }} / lat={{ stop!.Latitude }}</p>
-</section>
+<mat-card class="card">
+  <mat-card-header class="card-header">
+    <mat-card-title>{{ stop!.Haltestellenname }}</mat-card-title>
+    <mat-icon *ngIf="stop!.FavoriteStop != undefined">favorite</mat-icon>
+  </mat-card-header>
+  <mat-card-content>
+    <p>lon={{ stop!.Longitude }} / lat={{ stop!.Latitude }}</p>
+    <mat-chip-set>
+      <mat-chip *ngFor="let produkt of stop?.Produkte?.split(',')">{{
+        produkt
+      }}</mat-chip>
+    </mat-chip-set>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-slide-toggle
+      [checked]="stop!.FavoriteStop != null"
+      (change)="changeFavorite($event)"
+    >
+      Favorite
+    </mat-slide-toggle>
+  </mat-card-actions>
+</mat-card>

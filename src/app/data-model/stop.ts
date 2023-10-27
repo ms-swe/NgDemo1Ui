@@ -1,3 +1,5 @@
+import { FavoriteStop } from './favoriteStop';
+
 export interface Stop {
   Haltestellenname: string;
   VAGKennung?: string;
@@ -5,4 +7,5 @@ export interface Stop {
   Longitude?: number;
   Latitude?: number;
   Produkte?: string;
+  FavoriteStop?: FavoriteStop;
 }
