@@ -2,12 +2,24 @@
   <mat-sidenav #sidenav class="sidenav">
     <mat-nav-list>
       <a mat-list-item routerLink="/home" routerLinkActive="active">
-        <mat-icon matListIcon>timeline</mat-icon>
-        Startseite
+        <mat-icon matListIcon>home</mat-icon>
+        <span class="a-text">Startseite</span>
       </a>
-      <a mat-list-item routerLink="/stops" routerLinkActive="active">
-        <mat-icon matListIcon>settings</mat-icon>
-        Haltestellen
+      <a
+        mat-list-item
+        routerLink="/stops/search-stops"
+        routerLinkActive="active"
+      >
+        <mat-icon matListIcon>pin_drop</mat-icon>
+        <span class="a-text">Haltestellen suchen</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/stops/favorite-stops"
+        routerLinkActive="active"
+      >
+        <mat-icon matListIcon>favorite</mat-icon>
+        <span class="a-text">Haltestellen Favoriten</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
