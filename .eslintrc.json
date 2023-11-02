@@ -45,15 +45,31 @@
       "rules": {}
     },
     {
-        "files": ["*.html"],
-        "excludedFiles": ["*inline-temlpate-*.component.html"],
-        "extends": ["plugin:prettier/recommended"],
-        "rules": {
-            "prettier/prettier": [
-                "error",
-                {"parser": "angular"}
-            ]
-        }
+      "files": [
+        "*.html"
+      ],
+      "excludedFiles": [
+        "*inline-temlpate-*.component.html"
+      ],
+      "extends": [
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended"
+      ]
     }
   ]
 }
