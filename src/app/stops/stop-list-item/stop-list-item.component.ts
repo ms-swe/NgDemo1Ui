@@ -3,6 +3,7 @@ import { Stop } from 'src/app/data-model/stop';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {
   MatSlideToggleChange,
   MatSlideToggleModule,
@@ -22,12 +23,16 @@ import { FavoriteStopsService } from '../data/favoriteStops.service';
     MatSlideToggleModule,
     MatIconModule,
     MatChipsModule,
+    MatSnackBarModule,
   ],
 })
 export class StopListItemComponent {
   @Input() stop?: Stop;
 
-  constructor(private favoriteStopsService: FavoriteStopsService) {}
+  constructor(
+    private favoriteStopsService: FavoriteStopsService,
+    private snackBar: MatSnackBar
+  ) {}
 
   changeFavorite(event: MatSlideToggleChange) {
     let favoriteStop = this.stop?.FavoriteStop;
@@ -55,6 +60,14 @@ export class StopListItemComponent {
 
           // reset slide toggle to previous value
           event.source.checked = false;
+
+          this.snackBar.open(
+            'Favorit konnte nicht gesetzt werden',
+            'Schließen',
+            {
+              duration: 3000,
+            }
+          );
         },
         complete: () => console.log('favoriteStopsService.upsert completed'),
       });
@@ -70,8 +83,15 @@ export class StopListItemComponent {
           console.error(
             'favoriteStopsService.delete with error: ' + JSON.stringify(err)
           );
+
           // reset slide toggle to previous value
           event.source.checked = true;
+
+          this.snackBar.open(
+            'Favorit konnte nicht entfernt werden',
+            'Schließen',
+            { duration: 3000 }
+          );
         },
         complete: () => console.log('favoriteStopsService.delete completed'),
       });
