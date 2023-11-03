@@ -8,8 +8,8 @@ describe('StopSearchComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StopSearchComponent]
-    });
+    imports: [StopSearchComponent]
+});
     fixture = TestBed.createComponent(StopSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

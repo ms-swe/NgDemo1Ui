@@ -8,8 +8,8 @@ describe('StopListItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StopListItemComponent]
-    });
+    imports: [StopListItemComponent]
+});
     fixture = TestBed.createComponent(StopListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
