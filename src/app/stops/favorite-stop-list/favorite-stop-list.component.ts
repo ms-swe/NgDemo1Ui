@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FavoriteStop } from 'src/app/data-model/favoriteStop';
-import { Observable, of } from 'rxjs';
-import { FavoriteStopsService } from '../data/favoriteStops.service';
+import { FavoriteStopsFacade } from '../data/favorite-stops.facade';
 
 @Component({
   selector: 'nd-favorite-stop-list',
@@ -12,9 +10,12 @@ import { FavoriteStopsService } from '../data/favoriteStops.service';
   styleUrls: ['./favorite-stop-list.component.scss'],
 })
 export class FavoriteStopListComponent {
-  favoriteStops$: Observable<FavoriteStop[]>;
+  private facade = inject(FavoriteStopsFacade);
 
-  constructor(private favoriteStopsService: FavoriteStopsService) {
-    this.favoriteStops$ = favoriteStopsService.getAll();
+  favoriteStops = this.facade.favoriteStops;
+  loading = this.facade.favoriteStopsLoading;
+
+  constructor() {
+    this.facade.load();
   }
 }

@@ -10,7 +10,7 @@ import { JsonPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FavoriteStopsService } from '../data/favoriteStops.service';
+import { FavoriteStopsService } from '../data/favorite-stops.service';
 import { FavoriteStop } from 'src/app/data-model/favoriteStop';
 
 @Component({

@@ -1,10 +1,5 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { AppComponent } from './app/app.component';
-import { EffectsModule } from '@ngrx/effects';
 import { isDevMode, importProvidersFrom } from '@angular/core';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule } from '@ngrx/store';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -18,6 +13,9 @@ import {
 } from '@angular/common/http';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -27,13 +25,13 @@ bootstrapApplication(AppComponent, {
       MatIconModule,
       MatListModule,
       MatToolbarModule,
-      MatButtonModule,
-      StoreModule.forRoot({}, {}),
-      StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-      EffectsModule.forRoot([])
+      MatButtonModule
     ),
     provideRouter(APP_ROUTES),
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
+    provideStore(),
+    provideEffects(),
+    isDevMode() ? provideStoreDevtools() : [],
   ],
 }).catch((err) => console.error(err));

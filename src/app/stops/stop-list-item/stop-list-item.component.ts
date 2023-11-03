@@ -9,7 +9,7 @@ import {
   MatSlideToggleModule,
 } from '@angular/material/slide-toggle';
 import { NgIf, NgFor } from '@angular/common';
-import { FavoriteStopsService } from '../data/favoriteStops.service';
+import { FavoriteStopsService } from '../data/favorite-stops.service';
 
 @Component({
   selector: 'nd-stop-list-item',

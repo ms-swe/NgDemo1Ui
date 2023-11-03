@@ -1,7 +1,10 @@
 <h1>Favoriten</h1>
-<ul *ngIf="favoriteStops$ | async as favoriteStops">
+<div *ngIf="loading()">Loading...</div>
+<ul *ngIf="favoriteStops() as favoriteStops">
   <li *ngFor="let favoriteStop of favoriteStops">
     {{ favoriteStop.haltestellenname }}
   </li>
-  <li *ngIf="!favoriteStops.length">Keine Favoriten gespeichert</li>
+  <li *ngIf="!loading() && !favoriteStops.length">
+    Keine Favoriten gespeichert
+  </li>
 </ul>
