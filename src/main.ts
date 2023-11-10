@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { APP_ROUTES } from './app/app.routes';
 import {
@@ -25,7 +26,8 @@ bootstrapApplication(AppComponent, {
       MatIconModule,
       MatListModule,
       MatToolbarModule,
-      MatButtonModule
+      MatButtonModule,
+      MatSnackBarModule
     ),
     provideRouter(APP_ROUTES),
     provideHttpClient(withInterceptorsFromDi()),

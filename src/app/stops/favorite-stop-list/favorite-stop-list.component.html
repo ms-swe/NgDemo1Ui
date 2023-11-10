@@ -1,5 +1,5 @@
 <h1>Favoriten</h1>
-<div *ngIf="loading()">Loading...</div>
+<div *ngIf="loading()">Favoriten laden...</div>
 <ul *ngIf="favoriteStops() as favoriteStops">
   <li *ngFor="let favoriteStop of favoriteStops">
     {{ favoriteStop.haltestellenname }}

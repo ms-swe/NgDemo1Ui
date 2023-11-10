@@ -1,27 +1,21 @@
 import { Routes } from '@angular/router';
-import { StopSearchComponent } from './stop-search/stop-search.component';
+import { PublicStopSearchComponent } from './public-stop-search/public-stop-search.component';
 import { FavoriteStopListComponent } from './favorite-stop-list/favorite-stop-list.component';
 import { provideState } from '@ngrx/store';
-import { favoriteStopsFeature } from './data';
+import { stopsFeature } from './data';
 import { provideEffects } from '@ngrx/effects';
-import { FavoriteStopsEffects } from './data/+state/favorite-stops/effects';
+import { stopsEffects } from './data/+state/effects';
 
 export const STOPS_ROUTES: Routes = [
-  { path: '', redirectTo: 'search-stops', pathMatch: 'full' },
+  { path: '', redirectTo: 'search-public-stops', pathMatch: 'full' },
   {
-    path: 'search-stops',
-    component: StopSearchComponent,
-    providers: [
-      provideState(favoriteStopsFeature),
-      provideEffects(FavoriteStopsEffects),
-    ],
+    path: 'search-public-stops',
+    component: PublicStopSearchComponent,
+    providers: [provideState(stopsFeature), provideEffects(stopsEffects)],
   },
   {
     path: 'favorite-stops',
     component: FavoriteStopListComponent,
-    providers: [
-      provideState(favoriteStopsFeature),
-      provideEffects(FavoriteStopsEffects),
-    ],
+    providers: [provideState(stopsFeature), provideEffects(stopsEffects)],
   },
 ];

@@ -1,0 +1,19 @@
+<div *ngIf="loading()">Haltestellen laden...</div>
+<section class="public-stop-list" *ngIf="publicStops">
+  <div *ngFor="let publicStop of publicStops()">
+    <nd-public-stop-list-item
+      [publicStop]="publicStop"
+      [isFavorite]="isFavorite(publicStop.VGNKennung ?? 0)()"
+      (favoriteChanged)="
+        changeFavorite(
+          publicStop.VGNKennung!,
+          publicStop.Haltestellenname,
+          $event
+        )
+      "
+    ></nd-public-stop-list-item>
+  </div>
+  <div *ngIf="!loading() && !publicStops().length">
+    Keine Haltestellen gefunden
+  </div>
+</section>

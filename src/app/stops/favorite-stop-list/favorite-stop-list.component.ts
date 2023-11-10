@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FavoriteStopsFacade } from '../data/favorite-stops.facade';
+import { stopsFacade } from '../data/stops.facade';
 
 @Component({
   selector: 'nd-favorite-stop-list',
@@ -10,12 +10,12 @@ import { FavoriteStopsFacade } from '../data/favorite-stops.facade';
   styleUrls: ['./favorite-stop-list.component.scss'],
 })
 export class FavoriteStopListComponent {
-  private facade = inject(FavoriteStopsFacade);
+  private facade = inject(stopsFacade);
 
   favoriteStops = this.facade.favoriteStops;
-  loading = this.facade.favoriteStopsLoading;
+  loading = this.facade.loadingFavoriteStops;
 
   constructor() {
-    this.facade.load();
+    this.facade.loadFavoriteStops();
   }
 }

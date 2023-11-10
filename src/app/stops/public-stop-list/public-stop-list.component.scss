@@ -8,14 +8,14 @@
 //   margin-top: 1rem;
 // }
 
-.stop-list {
+.public-stop-list {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-auto-rows: auto;
 }
 
 @media screen and (max-width: 560px) {
-  .stop-list {
+  .public-stop-list {
     display: block;
   }
 }

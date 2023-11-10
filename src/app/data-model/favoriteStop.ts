@@ -1,5 +1,5 @@
 export interface FavoriteStop {
   id?: number;
-  haltestellenname: string;
+  haltestellenname?: string;
   vgnKennung: number;
 }
