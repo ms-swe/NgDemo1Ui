@@ -45,10 +45,13 @@ export class FavoriteStopListComponent {
   dataSource = new MatTableDataSource<FavoriteStop>([]);
 
   private sort!: MatSort;
+
   @ViewChild(MatSort) set matSort(ms: MatSort) {
     this.sort = ms;
     this.dataSource.sort = this.sort;
   }
+
+  showSimpleList: boolean = false;
 
   constructor(private dialog: MatDialog) {
     this.facade.loadFavoriteStops();

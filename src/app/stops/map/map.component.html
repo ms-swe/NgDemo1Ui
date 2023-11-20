@@ -1,4 +1,4 @@
-<h1>Favoriten</h1>
+<h2>Favoriten</h2>
 
 <div *ngIf="loading(); else notLoadingBlock">Favoriten werden geladen...</div>
 <ng-template #notLoadingBlock>
@@ -36,15 +36,6 @@
         <td mat-cell *matCellDef="let row">{{ row.vgnKennung }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef>Löschen</th>
-        <td mat-cell *matCellDef="let row">
-          <button mat-icon-button (click)="deleteFavoriteStop(row)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
@@ -60,23 +51,3 @@
     </table>
   </ng-template>
 </ng-template>
-
-<hr class="distanced" />
-
-@if (showSimpleList) {
-<h4>Alternative, einfache Darstellung:</h4>
-
-<div *ngIf="loading()">Favoriten werden geladen...</div>
-<ul *ngIf="favoriteStops() as favoriteStops">
-  <li *ngFor="let favoriteStop of favoriteStops">
-    {{ favoriteStop.haltestellenname }}
-  </li>
-  <li *ngIf="!loading() && !favoriteStops.length">
-    Keine Favoriten gespeichert
-  </li>
-</ul>
-} @else {
-<button mat-raised-button (click)="showSimpleList = true">
-  Auch als einfache Liste anzeigen
-</button>
-}

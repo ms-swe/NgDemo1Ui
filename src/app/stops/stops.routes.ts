@@ -5,6 +5,7 @@ import { provideState } from '@ngrx/store';
 import { stopsFeature } from './data';
 import { provideEffects } from '@ngrx/effects';
 import { stopsEffects } from './data/+state/effects';
+import { MapComponent } from './map/map.component';
 
 export const STOPS_ROUTES: Routes = [
   { path: '', redirectTo: 'search-public-stops', pathMatch: 'full' },
@@ -16,6 +17,11 @@ export const STOPS_ROUTES: Routes = [
   {
     path: 'favorite-stops',
     component: FavoriteStopListComponent,
+    providers: [provideState(stopsFeature), provideEffects(stopsEffects)],
+  },
+  {
+    path: 'map',
+    component: MapComponent,
     providers: [provideState(stopsFeature), provideEffects(stopsEffects)],
   },
 ];
