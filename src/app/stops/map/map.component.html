@@ -1,53 +1,136 @@
-<h2>Favoriten</h2>
+<as-split direction="horizontal" gutterSize="7" class="map-split-container">
+  <as-split-area [size]="30" class="map-split">
+    <div *ngIf="loadingFavoriteStops(); else notLoadingBlock">
+      Favoriten werden geladen...
+    </div>
+    <ng-template #notLoadingBlock>
+      <div *ngIf="!favoriteStops().length; else favoritesStoredBlock">
+        Keine Favoriten gespeichert
+      </div>
 
-<div *ngIf="loading(); else notLoadingBlock">Favoriten werden geladen...</div>
-<ng-template #notLoadingBlock>
-  <div *ngIf="!favoriteStops().length; else favoritesStoredBlock">
-    Keine Favoriten gespeichert
-  </div>
+      <ng-template #favoritesStoredBlock>
+        <section class="grid-container">
+          <h4 class="favorite-stops-header">Favoriten</h4>
+          <div class="favorite-stops-filter">
+            <mat-form-field>
+              <mat-label>Filter</mat-label>
+              <input
+                matInput
+                (keyup)="applyFilter($event)"
+                placeholder="bahnhof"
+                #input
+              />
+            </mat-form-field>
+          </div>
 
-  <ng-template #favoritesStoredBlock>
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="bahnhof"
-        #input
-      />
-    </mat-form-field>
+          <div
+            class="favorite-stops-data"
+            cdkDropList
+            [cdkDropListConnectedTo]="[selectedStopsList]"
+            #favoriteStopsList="cdkDropList"
+            (cdkDropListDropped)="dropIntoFavorites($event)"
+            cdkDropListSortingDisabled
+            [cdkDropListEnterPredicate]="intoFavoriteStopsPredicate"
+          >
+            <table
+              mat-table
+              [dataSource]="dataSourceFavorites"
+              matSort
+              matSortActive="haltestellenname"
+              matSortDirection="asc"
+            >
+              <ng-container matColumnDef="haltestellenname">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let row">
+                  {{ row.haltestellenname }}
+                </td>
+              </ng-container>
 
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      matSort
-      matSortActive="haltestellenname"
-      matSortDirection="asc"
-    >
-      <ng-container matColumnDef="haltestellenname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td mat-cell *matCellDef="let row">
-          {{ row.haltestellenname }}
-        </td>
-      </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr
+                mat-row
+                *matRowDef="let row; columns: displayedColumns"
+                cdkDrag
+                [cdkDragData]="row"
+              ></tr>
+            </table>
+          </div>
 
-      <ng-container matColumnDef="vgnKennung">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>VGN Kennung</th>
-        <td mat-cell *matCellDef="let row">{{ row.vgnKennung }}</td>
-      </ng-container>
+          <h4 class="selected-stops-header">Ausgewählt</h4>
+          <div
+            class="selected-stops-data"
+            cdkDropList
+            #selectedStopsList="cdkDropList"
+            [cdkDropListConnectedTo]="[favoriteStopsList]"
+            (cdkDropListDropped)="dropIntoSelected($event)"
+            [cdkDropListEnterPredicate]="intoSelectedStopsPredicate"
+          >
+            <table mat-table [dataSource]="dataSourceSelected()">
+              <ng-container matColumnDef="haltestellenname">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let row">
+                  {{ row.haltestellenname }}
+                </td>
+              </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr
+                mat-row
+                *matRowDef="let row; columns: displayedColumns"
+                cdkDrag
+                [cdkDragData]="row"
+              ></tr>
+            </table>
+          </div>
+        </section>
+      </ng-template>
+    </ng-template>
+  </as-split-area>
+  <as-split-area class="map-split">
+    <div class="map-div">
+      <mat-slide-toggle #toggleImageTransparent class="map-toggle">
+        halb transparent
+      </mat-slide-toggle>
 
-      <tr class="mat-row" *matNoDataRow>
-        <td
-          *ngIf="!loading() && favoriteStops.length"
-          class="mat-cell"
-          colspan="4"
+      <mat-slide-toggle #toggleImageFilter class="map-toggle">
+        gefiltert
+      </mat-slide-toggle>
+
+      <ng-container #mapContainer>
+        <img
+          src="../../../assets/maps/nuernberg1.png"
+          alt="Stadtplan von Nürnberg"
+          width="2000"
+          height="1500"
+          class="map-image"
+          [ngClass]="{
+            'map-image-transparent': toggleImageTransparent.checked,
+            'map-image-filter': toggleImageFilter.checked
+          }"
+        />
+
+        @for (selectedStop of dataSourceSelected(); track
+        selectedStop.vgnKennung) {
+        <div
+          class="map-div-selected-stop"
+          #mapDivSelectedStop
+          id="vgnKennung-{{ selectedStop.vgnKennung }}"
+          (mouseover)="registerMouseOver(selectedStop.vgnKennung)"
+          (mouseleave)="registerMouseLeave(selectedStop.vgnKennung)"
         >
-          Keine Daten für den Filter gefunden: "{{ input.value }}"
-        </td>
-      </tr>
-    </table>
-  </ng-template>
-</ng-template>
+          <mat-icon class="map-image-selected-stop">location_on</mat-icon>
+          @if(isMouseOverSelectedStop(selectedStop.vgnKennung)) {
+          <nd-public-stop-list-item
+            [haltestellenname]="selectedStop.haltestellenname!"
+            [longitude]="selectedStop.longitude!"
+            [latitude]="selectedStop.latitude!"
+            [produkte]="selectedStop.produkte!"
+            [isFavorite]="true"
+          ></nd-public-stop-list-item>
+          }
+        </div>
+        }
+      </ng-container>
+    </div>
+  </as-split-area>
+</as-split>

@@ -1,0 +1,63 @@
+.as-split-container {
+  height: 20vh;
+  background-color: rgb(189, 207, 216);
+}
+
+.img-block {
+  display: block;
+}
+
+.dist-frame {
+  border: 1px solid;
+}
+
+.dist-obj1 {
+  background-color: darkseagreen;
+  width: 100px;
+  padding: 5px;
+  margin: 3px;
+}
+
+.dist-obj2 {
+  background-color: darksalmon;
+  padding: 8px;
+  margin: 6px;
+}
+
+.mov-frame {
+  border: 1px dashed;
+}
+
+.mov-obj {
+  background-color: lightgreen;
+  width: 100px;
+  padding: 0px;
+  margin: 10px;
+}
+
+.div-img-basis {
+  position: relative;
+}
+
+.div-img-moving {
+  position: absolute;
+  left: 20px - 13px;
+  top: 20px - 13px;
+}
+
+.div-img-scalable-basis {
+  position: relative;
+  width: fit-content;
+}
+
+.div-img-scalable-moving {
+  position: absolute;
+  left: calc(100% - 13px); // initial position: right
+  top: calc(100% - 13px); // initial position: bottom
+}
+
+.img-block-scalable {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}

@@ -30,10 +30,19 @@ export class PublicStopListComponent {
   changeFavorite(
     vgnKennung: number,
     haltestellenname: string,
+    longitude: number,
+    latitude: number,
+    produkte: string,
     checkedAsFavorite: boolean
   ) {
     if (checkedAsFavorite) {
-      this.facade.createFavoriteStop(vgnKennung, haltestellenname);
+      this.facade.createFavoriteStop(
+        vgnKennung,
+        haltestellenname,
+        longitude,
+        latitude,
+        produkte
+      );
     } else {
       this.facade.deleteFavoriteStop(vgnKennung);
     }

@@ -2,12 +2,19 @@
 <section class="public-stop-list" *ngIf="publicStops">
   <div *ngFor="let publicStop of publicStops()">
     <nd-public-stop-list-item
-      [publicStop]="publicStop"
+      [haltestellenname]="publicStop.Haltestellenname"
+      [longitude]="publicStop.Longitude!"
+      [latitude]="publicStop.Latitude!"
+      [produkte]="publicStop.Haltestellenname"
       [isFavorite]="isFavorite(publicStop.VGNKennung ?? 0)()"
+      [isFavoriteChangeable]="true"
       (favoriteChanged)="
         changeFavorite(
           publicStop.VGNKennung!,
           publicStop.Haltestellenname,
+          publicStop.Longitude!,
+          publicStop.Latitude!,
+          publicStop.Produkte!,
           $event
         )
       "

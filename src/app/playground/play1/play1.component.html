@@ -1,0 +1,76 @@
+<h3>Distances, Margin, Padding</h3>
+<div class="dist-frame">
+  <div class="dist-obj1">
+    <img
+      class="img-block"
+      src="../../../assets/playground/rectangle100x50.jpg"
+    />
+  </div>
+  <div class="dist-obj2">
+    <img
+      class="img-block"
+      src="../../../assets/playground/rectangle100x50.jpg"
+    />
+  </div>
+</div>
+
+<h3>Moving</h3>
+<div class="mov-frame">
+  <div class="mov-obj" #movObj1>
+    <img
+      class="img-block"
+      src="../../../assets/playground/rectangle100x50.jpg"
+    />
+  </div>
+  <div class="mov-obj" #movObj2>
+    <img
+      class="img-block"
+      src="../../../assets/playground/rectangle100x50.jpg"
+    />
+  </div>
+
+  <div>
+    <div class="div-img-basis">
+      <ng-container #imgBasis>
+        <img
+          class="img-block"
+          src="../../../assets/playground/rectangle100x50.jpg"
+        />
+        <div class="div-img-moving" #imgMoving>
+          <img
+            class="img-block"
+            src="../../../assets/playground/cross25x25.png"
+          />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<button (click)="manipulate()">Manipulate...</button>
+
+<h3>Moving on Scalable Image</h3>
+<div class="mov-frame">
+  <div>
+    <div class="div-img-scalable-basis">
+      <ng-container #imgScalableBasis>
+        <img
+          class="img-block-scalable"
+          src="../../../assets/playground/rectangle600x300.jpg"
+        />
+        <div class="div-img-scalable-moving" #imgScalableMoving>
+          <img
+            class="img-block"
+            src="../../../assets/playground/cross25x25.png"
+          />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<button (click)="moveOnScalableImage()">Move...</button>
+
+<h3>as-split</h3>
+<as-split class="as-split-container" direction="horizontal" gutterSize="7">
+  <as-split-area [size]="20"> <p>LEFT</p> </as-split-area>
+  <as-split-area [size]="80"> <p>RIGHT</p> </as-split-area>
+</as-split>

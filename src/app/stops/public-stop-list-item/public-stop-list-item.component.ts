@@ -26,13 +26,16 @@ import { NgIf, NgFor } from '@angular/common';
   ],
 })
 export class PublicStopListItemComponent {
-  @Input() publicStop: PublicStop;
-  @Input() isFavorite: boolean;
+  @Input() haltestellenname = '';
+  @Input() longitude = 0;
+  @Input() latitude = 0;
+  @Input() produkte = '';
+  @Input() isFavorite: boolean = false;
+  @Input() isFavoriteChangeable: boolean = false;
 
   @Output() favoriteChanged = new EventEmitter<boolean>();
 
   constructor() {
-    this.publicStop = { Haltestellenname: '' };
     this.isFavorite = false;
   }
 

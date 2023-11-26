@@ -1,8 +1,14 @@
 .card {
-  margin: 10px;
+  margin: 0.5em;
+  min-height: 11em;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
+  min-height: 2.5em;
+}
+
+.chip-area {
+  min-height: 2.5em;
 }

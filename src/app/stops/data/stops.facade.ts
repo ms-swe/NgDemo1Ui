@@ -53,11 +53,17 @@ export class stopsFacade {
 
   async createFavoriteStop(
     vgnKennung: number,
-    haltestellenname: string
+    haltestellenname: string,
+    longitude: number,
+    latitude: number,
+    produkte: string
   ): Promise<void> {
     let favoriteStop: FavoriteStop = {
       vgnKennung: vgnKennung,
       haltestellenname: haltestellenname,
+      longitude: longitude,
+      latitude: latitude,
+      produkte: produkte,
     };
     this.store.dispatch(stopsActions.createFavoriteStop({ favoriteStop }));
   }

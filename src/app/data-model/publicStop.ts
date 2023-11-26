@@ -1,5 +1,3 @@
-import { FavoriteStop } from './favoriteStop';
-
 export interface PublicStop {
   Haltestellenname: string;
   VAGKennung?: string;

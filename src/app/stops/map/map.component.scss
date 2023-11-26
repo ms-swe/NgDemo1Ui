@@ -1,3 +1,92 @@
-:host {
+.map-split-container {
+  height: 90vh;
+}
+
+.map-split {
+  padding: 1em 1em;
+}
+
+.map-toggle {
+  margin-bottom: 2em;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "fav-header sel-header"
+    "fav-filter nothing"
+    "fav-data sel-data";
+}
+
+.favorite-stops-header {
+  padding: 0.2em;
+  grid-area: fav-header;
+}
+
+.selected-stops-header {
+  padding: 0.2em;
+  grid-area: sel-header;
+}
+
+.favorite-stops-filter {
+  padding: 0.2em;
+  grid-area: fav-filter;
+}
+
+.favorite-stops-data {
+  padding: 0.2em;
+  grid-area: fav-data;
+}
+
+.selected-stops-data {
+  padding: 0.2em;
+  grid-area: sel-data;
+}
+
+// the preview is the UI component that is being dragged
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  font-weight: bold;
+  padding-top: 1em;
+}
+
+// the placeholder is a temporary UI element rendered in the table.
+.cdk-drag-placeholder {
+  opacity: 0; // opposite of transparency
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.map-div {
+  position: relative;
+  width: fit-content;
+}
+
+.map-image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.map-image-transparent {
+  opacity: 0.5;
+}
+
+.map-image-filter {
+  filter: hue-rotate(90deg) invert(100%);
+}
+
+.map-div-selected-stop {
+  position: absolute;
+}
+
+.map-image-selected-stop {
   display: block;
 }

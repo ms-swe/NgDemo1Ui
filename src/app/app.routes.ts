@@ -9,4 +9,9 @@ export const APP_ROUTES: Routes = [
     loadChildren: () =>
       import('./stops/stops.routes').then((m) => m.STOPS_ROUTES),
   },
+  {
+    path: 'playground',
+    loadChildren: () =>
+      import('./playground/playground.routes').then((m) => m.PLAYGROUND_ROUTES),
+  },
 ];

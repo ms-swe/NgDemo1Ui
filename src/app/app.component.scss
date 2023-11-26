@@ -32,13 +32,13 @@
   flex-grow: 1;
   flex-shrink: 1;
   overflow: auto;
-  padding: 24px;
+  padding: 12px;
 }
 
 ::ng-deep router-outlet + * {
   display: block;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
