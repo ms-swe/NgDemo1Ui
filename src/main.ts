@@ -34,6 +34,6 @@ bootstrapApplication(AppComponent, {
     provideAnimations(),
     provideStore(),
     provideEffects(),
-    isDevMode() ? provideStoreDevtools() : [],
+    isDevMode() ? provideStoreDevtools({connectInZone: true}) : [],
   ],
 }).catch((err) => console.error(err));
