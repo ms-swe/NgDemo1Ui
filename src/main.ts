@@ -1,3 +1,5 @@
+/// <reference types="@angular/localize" />
+
 import { AppComponent } from './app/app.component';
 import { isDevMode, importProvidersFrom } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';

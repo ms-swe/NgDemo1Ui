@@ -38,6 +38,7 @@
     "@angular-eslint/template-parser": "17.1.0",
     "@angular/cli": "~17.0.1",
     "@angular/compiler-cli": "^17.0.3",
+    "@angular/localize": "^17.0.3",
     "@ngrx/eslint-plugin": "^17.0.1",
     "@ngrx/schematics": "^17.0.1",
     "@types/jasmine": "~4.3.0",
