@@ -28,6 +28,10 @@
   flex-shrink: 0;
 }
 
+.stretch {
+  flex-grow: 1;
+}
+
 .content {
   flex-grow: 1;
   flex-shrink: 1;

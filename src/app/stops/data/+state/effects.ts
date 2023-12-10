@@ -52,7 +52,7 @@ export class stopsEffects {
       catchError(() =>
         of(
           stopsActions.communicationErrorFavoriteStops({
-            message: 'Der Favorit konnte nicht gesetzt werden.',
+            message: $localize`:@@EffectErrorCreateFavoriteStop:The favorite could not be set.`,
           })
         )
       )
@@ -72,7 +72,7 @@ export class stopsEffects {
           catchError(() =>
             of(
               stopsActions.communicationErrorFavoriteStops({
-                message: 'Der Favorit konnte nicht entfernt werden.',
+                message: $localize`:@@EffectErrorDeleteFavoriteStop:The favorite could not be deleted.`,
               })
             )
           )
@@ -86,9 +86,13 @@ export class stopsEffects {
       return this.actions$.pipe(
         ofType(stopsActions.communicationErrorFavoriteStops),
         map((action) => {
-          this.snackBar.open(action.message, 'Schließen', {
-            duration: 3000,
-          });
+          this.snackBar.open(
+            action.message,
+            $localize`:@@EffectErrorMessageClose:Close`,
+            {
+              duration: 3000,
+            }
+          );
         })
       );
     },

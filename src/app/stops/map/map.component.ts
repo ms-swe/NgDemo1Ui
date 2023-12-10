@@ -66,6 +66,8 @@ export class MapComponent {
     this.dataSourceFavorites.sort = this.sort;
   }
 
+  currentDate = new Date();
+
   private selectedStopsRef!: QueryList<ElementRef>;
   @ViewChildren('mapDivSelectedStop') set setMapDivSelectedStop(
     mapDivSelectedStop: QueryList<ElementRef>
@@ -149,8 +151,8 @@ export class MapComponent {
   }
 
   updateSelectedStopsInMap() {
-    const mapDivStopOffsetHorz = 12;
-    const mapDivStopOffsetVert = 24;
+    const mapDivStopOffsetHorz = 0;
+    const mapDivStopOffsetVert = 0;
 
     const mapMinLon = 11.024; // west
     const mapMaxLon = 11.138; // east
@@ -163,12 +165,17 @@ export class MapComponent {
           'vgnKennung-' + val.vgnKennung == selectedStopRef.nativeElement.id
       );
       if (correspondingfavoriteStop) {
+        console.log(correspondingfavoriteStop.latitude);
+        console.log(mapMinLat);
+        console.log(mapMaxLat);
+
         let xPercent =
           (100 * (correspondingfavoriteStop.longitude! - mapMinLon)) /
           (mapMaxLon - mapMinLon);
         let yPercent =
           (100 * (correspondingfavoriteStop.latitude! - mapMinLat)) /
           (mapMaxLat - mapMinLat);
+        console.log(yPercent);
 
         if (xPercent > 100) {
           xPercent = 105;

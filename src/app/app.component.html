@@ -3,7 +3,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/home" routerLinkActive="active">
         <mat-icon matListIcon>home</mat-icon>
-        <span class="a-text">Startseite</span>
+        <span class="a-text" i18n="@@NavigationStartpage">Start Page</span>
       </a>
       <a
         mat-list-item
@@ -11,7 +11,7 @@
         routerLinkActive="active"
       >
         <mat-icon matListIcon>pin_drop</mat-icon>
-        <span class="a-text">Haltestellen suchen</span>
+        <span class="a-text" i18n="@@NavigationSearchStops">Search Stops</span>
       </a>
       <a
         mat-list-item
@@ -19,15 +19,17 @@
         routerLinkActive="active"
       >
         <mat-icon matListIcon>favorite</mat-icon>
-        <span class="a-text">Haltestellen Favoriten</span>
+        <span class="a-text" i18n="@@NavigationFavoriteStops"
+          >Favorite Stops</span
+        >
       </a>
       <a mat-list-item routerLink="/stops/map" routerLinkActive="active">
         <mat-icon matListIcon>map</mat-icon>
-        <span class="a-text">Karte</span>
+        <span class="a-text" i18n="@@NavigationMap">Map</span>
       </a>
       <a mat-list-item routerLink="/playground" routerLinkActive="active">
         <mat-icon matListIcon>sports_tennis</mat-icon>
-        <span class="a-text">Spielplatz</span>
+        <span class="a-text" i18n="@@NavigationPlayground">Playground</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -41,6 +43,24 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span>Ng Demo 1</span>
+      <span class="stretch"></span>
+      <mat-button-toggle-group
+        name="languageSelection"
+        aria-label="Language Selection"
+      >
+        <mat-button-toggle
+          [checked]="getLocale() == 'de-DE'"
+          (click)="changeLocale('de-DE')"
+          i18n="@@LanguageGerman"
+          >German</mat-button-toggle
+        >
+        <mat-button-toggle
+          [checked]="getLocale() == 'en-US'"
+          (click)="changeLocale('en-US')"
+          i18n="@@LanguageEnglish"
+          >English</mat-button-toggle
+        >
+      </mat-button-toggle-group>
     </mat-toolbar>
 
     <main class="content">

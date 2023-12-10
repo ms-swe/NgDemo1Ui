@@ -1,26 +1,34 @@
-<h1>Haltestellen suchen</h1>
+<h1 i18n="@@PublicStopSearchHeader">Search stops</h1>
 <section class="search-criteria">
-  <h3>Suchkriterien</h3>
+  <h2 i18n="@@PublicStopSearchCriteria">Search Criteria</h2>
 
   <form [formGroup]="form" (ngSubmit)="submitForm()">
     <div formGroupName="criteria">
       <mat-form-field class="form-field">
-        <mat-label for="name">Name der Haltestelle</mat-label>
+        <mat-label for="name" i18n="@@PublicStopSearchCriteriaName"
+          >Name of the stop</mat-label
+        >
         <input matInput id="name" formControlName="name" />
       </mat-form-field>
 
       <mat-form-field class="form-field">
-        <mat-label for="lon">Länge [WGS 84 Format in Grad]</mat-label>
+        <mat-label for="lon" i18n="@@PublicStopSearchCriteriaLongitude"
+          >Longitude [WGS 84 format in degree]</mat-label
+        >
         <input matInput id="lon" formControlName="lon" />
       </mat-form-field>
 
       <mat-form-field class="form-field">
-        <mat-label for="lat">Breite [WGS 84 Format in Grad]</mat-label>
+        <mat-label for="lat" i18n="@@PublicStopSearchCriteriaLatitude"
+          >Latitude [WGS 84 format in degree]</mat-label
+        >
         <input matInput id="lat" formControlName="lat" />
       </mat-form-field>
 
       <mat-form-field class="form-field">
-        <mat-label for="radius">Radius [m]</mat-label>
+        <mat-label for="radius" i18n="@@PublicStopSearchCriteriaRadius"
+          >Radius [m]</mat-label
+        >
         <input matInput id="radius" formControlName="radius" />
       </mat-form-field>
     </div>
@@ -28,8 +36,7 @@
     <nd-form-errors
       controlName="criteria"
       [messages]="{
-        stopsearchcriteriacorrect:
-          'Name oder Länge/Breite/Radius muss angegeben werden'
+        stopsearchcriteriacorrect: validatorTextStopsearchcriteriacorrect
       }"
     ></nd-form-errors>
 
@@ -38,12 +45,13 @@
       [disabled]="form.invalid"
       mat-raised-button
       color="primary"
+      i18n="@@PublicStopSearchButtonSearch"
     >
-      Suchen
+      Search
     </button>
   </form>
 </section>
 
-<h3>Haltestellen</h3>
+<h2 i18n="@@PublicStopSearchResults">Results</h2>
 
 <nd-public-stop-list></nd-public-stop-list>

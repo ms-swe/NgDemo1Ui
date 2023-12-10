@@ -81,8 +81,11 @@ export class Play1Component {
       });
       this.newComponent.changeDetectorRef.detectChanges();
     }
-    this.newComponent.setInput('aText', `at ${this.xVal}`);
-    this.newComponent.instance.aText = `AT ${this.xVal}`; // funktioniert nur, wenn vorher setInput verwendet wurde
+    this.newComponent.setInput(
+      'aText',
+      $localize`:@@Play1Text1:a new comp. at x ${this.xVal}`
+    );
+    this.newComponent.instance.aText = $localize`:@@Play1Text2:a new component at x ${this.xVal}`; // funktioniert nur, wenn vorher setInput verwendet wurde
 
     this.xVal += 10;
   }

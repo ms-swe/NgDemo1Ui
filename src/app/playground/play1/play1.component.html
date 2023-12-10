@@ -1,4 +1,4 @@
-<h3>Distances, Margin, Padding</h3>
+<h3 i18n="@@Play1Section1">Distances, Margin, Padding</h3>
 <div class="dist-frame">
   <div class="dist-obj1">
     <img
@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<h3>Moving</h3>
+<h3 i18n="@@Play1Section2">Moving</h3>
 <div class="mov-frame">
   <div class="mov-obj" #movObj1>
     <img
@@ -46,9 +46,9 @@
     </div>
   </div>
 </div>
-<button (click)="manipulate()">Manipulate...</button>
+<button (click)="manipulate()" i18n="@@Play1Manipulate">Manipulate...</button>
 
-<h3>Moving on Scalable Image</h3>
+<h3 i18n="@@Play1Section3">Moving on Scalable Image</h3>
 <div class="mov-frame">
   <div>
     <div class="div-img-scalable-basis">
@@ -67,10 +67,14 @@
     </div>
   </div>
 </div>
-<button (click)="moveOnScalableImage()">Move...</button>
+<button (click)="moveOnScalableImage()" i18n="@@Play1Move">Move...</button>
 
-<h3>as-split</h3>
+<h3 i18n="@@Play1Section4">Using as-split</h3>
 <as-split class="as-split-container" direction="horizontal" gutterSize="7">
-  <as-split-area [size]="20"> <p>LEFT</p> </as-split-area>
-  <as-split-area [size]="80"> <p>RIGHT</p> </as-split-area>
+  <as-split-area [size]="20">
+    <p i18n="@@Play1AreaLeft">Left</p>
+  </as-split-area>
+  <as-split-area [size]="80">
+    <p i18n="@@Play1AreaRight">Right</p>
+  </as-split-area>
 </as-split>

@@ -5,6 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { getLocale } from 'src/main';
 
 @Component({
   selector: 'nd-root',
@@ -19,9 +21,19 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
+    MatButtonToggleModule,
     RouterOutlet,
   ],
 })
 export class AppComponent {
   title = 'NgDemo1Ui';
+
+  getLocale() {
+    return getLocale();
+  }
+
+  changeLocale(targetLanguage: string) {
+    localStorage.setItem('locale', targetLanguage);
+    location.reload();
+  }
 }

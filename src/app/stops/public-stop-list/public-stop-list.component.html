@@ -1,4 +1,6 @@
-<div *ngIf="loading()">Haltestellen laden...</div>
+<div *ngIf="loading()" i18n="@@PublicStopListMessageLoading">
+  Loading stops...
+</div>
 <section class="public-stop-list" *ngIf="publicStops">
   <div *ngFor="let publicStop of publicStops()">
     <nd-public-stop-list-item
@@ -20,7 +22,10 @@
       "
     ></nd-public-stop-list-item>
   </div>
-  <div *ngIf="!loading() && !publicStops().length">
-    Keine Haltestellen gefunden
+  <div
+    *ngIf="!loading() && !publicStops().length"
+    i18n="@@PublicStopListNoStopsFound"
+  >
+    No stops found
   </div>
 </section>

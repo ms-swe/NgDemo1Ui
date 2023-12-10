@@ -4,16 +4,22 @@
     <mat-icon *ngIf="isFavorite">favorite</mat-icon>
   </mat-card-header>
   <mat-card-content>
-    <p>lon={{ longitude }} / lat={{ latitude }}</p>
+    <p>
+      lon={{ longitude | number : "1.3-6" }} / lat={{
+        latitude | number : "1.3-6"
+      }}
+    </p>
     <mat-chip-set class="chip-area">
-      <mat-chip *ngFor="let produkt of produkte?.split(',')">{{
-        produkt
-      }}</mat-chip>
+      <mat-chip *ngFor="let produkt of getProducts()">{{ produkt }}</mat-chip>
     </mat-chip-set>
   </mat-card-content>
   <mat-card-actions *ngIf="isFavoriteChangeable">
-    <mat-slide-toggle [checked]="isFavorite" (change)="changeFavorite($event)">
-      Favorit
+    <mat-slide-toggle
+      [checked]="isFavorite"
+      (change)="changeFavorite($event)"
+      i18n="@@PublicStopListItemIsFavorite"
+    >
+      Favorite
     </mat-slide-toggle>
   </mat-card-actions>
 </mat-card>

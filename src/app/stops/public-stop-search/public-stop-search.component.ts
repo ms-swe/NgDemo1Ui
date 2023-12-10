@@ -27,6 +27,8 @@ import { stopsFacade } from '../data/stops.facade';
 export class PublicStopSearchComponent {
   private facade = inject(stopsFacade);
 
+  readonly validatorTextStopsearchcriteriacorrect = $localize`:@@PublicStopSearchCriteriaValidatorText:Name or Longitude+Latitude+Radius must be given`;
+
   form = new FormGroup({
     criteria: new FormGroup(
       {

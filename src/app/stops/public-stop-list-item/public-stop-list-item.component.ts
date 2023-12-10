@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PublicStop } from 'src/app/data-model/publicStop';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
@@ -8,7 +7,8 @@ import {
   MatSlideToggleChange,
   MatSlideToggleModule,
 } from '@angular/material/slide-toggle';
-import { NgIf, NgFor } from '@angular/common';
+import { NgIf, NgFor, DecimalPipe } from '@angular/common';
+import { getLocalizedProduct } from '../shared/Product';
 
 @Component({
   selector: 'nd-public-stop-list-item',
@@ -18,6 +18,7 @@ import { NgIf, NgFor } from '@angular/common';
   imports: [
     NgIf,
     NgFor,
+    DecimalPipe,
     MatCardModule,
     MatSlideToggleModule,
     MatIconModule,
@@ -37,6 +38,16 @@ export class PublicStopListItemComponent {
 
   constructor() {
     this.isFavorite = false;
+  }
+
+  getProducts(): string[] {
+    let productsAsArray: string[] = [];
+
+    this.produkte?.split(',').forEach((product) => {
+      productsAsArray.push(getLocalizedProduct(product));
+    });
+
+    return productsAsArray;
   }
 
   changeFavorite(event: MatSlideToggleChange) {

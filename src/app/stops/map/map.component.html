@@ -1,23 +1,32 @@
 <as-split direction="horizontal" gutterSize="7" class="map-split-container">
   <as-split-area [size]="30" class="map-split">
-    <div *ngIf="loadingFavoriteStops(); else notLoadingBlock">
-      Favoriten werden geladen...
+    <div
+      *ngIf="loadingFavoriteStops(); else notLoadingBlock"
+      i18n="@@MapMessageLoading"
+    >
+      Loading favorites...
     </div>
     <ng-template #notLoadingBlock>
-      <div *ngIf="!favoriteStops().length; else favoritesStoredBlock">
-        Keine Favoriten gespeichert
+      <div
+        *ngIf="!favoriteStops().length; else favoritesStoredBlock"
+        i18n="@@MapMessageNoneStored"
+      >
+        No favorites stored
       </div>
 
       <ng-template #favoritesStoredBlock>
         <section class="grid-container">
-          <h4 class="favorite-stops-header">Favoriten</h4>
+          <h4 class="favorite-stops-header" i18n="@@MapFavoritesHeader">
+            Favorites
+          </h4>
           <div class="favorite-stops-filter">
             <mat-form-field>
-              <mat-label>Filter</mat-label>
+              <mat-label i18n="@@MapFilterLabel">Filter</mat-label>
               <input
                 matInput
                 (keyup)="applyFilter($event)"
-                placeholder="bahnhof"
+                placeholder="station"
+                i18n-placeholder="@@MapFilterPlaceholder"
                 #input
               />
             </mat-form-field>
@@ -40,7 +49,14 @@
               matSortDirection="asc"
             >
               <ng-container matColumnDef="haltestellenname">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  i18n="@@MapFavoritesColHeaderName"
+                >
+                  Name
+                </th>
                 <td mat-cell *matCellDef="let row">
                   {{ row.haltestellenname }}
                 </td>
@@ -56,7 +72,9 @@
             </table>
           </div>
 
-          <h4 class="selected-stops-header">Ausgewählt</h4>
+          <h4 class="selected-stops-header" i18n="@@MapSelectedHeader">
+            Selected
+          </h4>
           <div
             class="selected-stops-data"
             cdkDropList
@@ -67,7 +85,13 @@
           >
             <table mat-table [dataSource]="dataSourceSelected()">
               <ng-container matColumnDef="haltestellenname">
-                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  i18n="@@MapSelectedColHeaderName"
+                >
+                  Name
+                </th>
                 <td mat-cell *matCellDef="let row">
                   {{ row.haltestellenname }}
                 </td>
@@ -87,15 +111,25 @@
     </ng-template>
   </as-split-area>
   <as-split-area class="map-split">
+    <mat-slide-toggle
+      #toggleImageTransparent
+      class="map-toggle"
+      i18n="@@MapToggleEffect1"
+    >
+      50% transparent
+    </mat-slide-toggle>
+
+    <mat-slide-toggle
+      #toggleImageFilter
+      class="map-toggle"
+      i18n="@@MapToggleEffect2"
+    >
+      filtered
+    </mat-slide-toggle>
+
+    <span>{{ currentDate | date : "full" }}</span>
+
     <div class="map-div">
-      <mat-slide-toggle #toggleImageTransparent class="map-toggle">
-        halb transparent
-      </mat-slide-toggle>
-
-      <mat-slide-toggle #toggleImageFilter class="map-toggle">
-        gefiltert
-      </mat-slide-toggle>
-
       <ng-container #mapContainer>
         <img
           src="../../../assets/maps/nuernberg1.png"

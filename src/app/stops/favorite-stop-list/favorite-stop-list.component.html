@@ -1,18 +1,24 @@
-<h1>Favoriten</h1>
+<h1 i18n="@@FavStopListHeaderMain">Favorites</h1>
 
-<div *ngIf="loading(); else notLoadingBlock">Favoriten werden geladen...</div>
+<div *ngIf="loading(); else notLoadingBlock" i18n="@@FavStopListMessageLoading">
+  Loading favorites...
+</div>
 <ng-template #notLoadingBlock>
-  <div *ngIf="!favoriteStops().length; else favoritesStoredBlock">
-    Keine Favoriten gespeichert
+  <div
+    *ngIf="!favoriteStops().length; else favoritesStoredBlock"
+    i18n="@@FavStopListMessageNoneStored"
+  >
+    No favorites stored
   </div>
 
   <ng-template #favoritesStoredBlock>
     <mat-form-field>
-      <mat-label>Filter</mat-label>
+      <mat-label i18n="@@FavStopListFilterLabel">Filter</mat-label>
       <input
         matInput
         (keyup)="applyFilter($event)"
-        placeholder="bahnhof"
+        i18n-placeholder="@@FavStopListFilterPlaceholder"
+        placeholder="station"
         #input
       />
     </mat-form-field>
@@ -25,19 +31,39 @@
       matSortDirection="asc"
     >
       <ng-container matColumnDef="haltestellenname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          i18n="@@FavStopListColHeaderName"
+        >
+          Name
+        </th>
         <td mat-cell *matCellDef="let row">
           {{ row.haltestellenname }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="vgnKennung">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>VGN Kennung</th>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          i18n="@@FavStopListColHeaderVgnKennung"
+        >
+          VGN Identifier
+        </th>
         <td mat-cell *matCellDef="let row">{{ row.vgnKennung }}</td>
       </ng-container>
 
       <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef>Löschen</th>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          i18n="@@FavStopListColHeaderDelete"
+        >
+          Delete
+        </th>
         <td mat-cell *matCellDef="let row">
           <button mat-icon-button (click)="deleteFavoriteStop(row)">
             <mat-icon>delete</mat-icon>
@@ -53,8 +79,9 @@
           *ngIf="!loading() && favoriteStops.length"
           class="mat-cell"
           colspan="4"
+          i18n="@@FavStopListFilterNoData"
         >
-          Keine Daten für den Filter gefunden: "{{ input.value }}"
+          No data found for the given filter: "{{ input.value }}"
         </td>
       </tr>
     </table>
@@ -64,19 +91,28 @@
 <hr class="distanced" />
 
 @if (showSimpleList) {
-<h4>Alternative, einfache Darstellung:</h4>
+<h2 i18n="@@FavStopListHeaderAlternativeList">Alternative, simple list:</h2>
 
-<div *ngIf="loading()">Favoriten werden geladen...</div>
+<div *ngIf="loading()" i18n="@@FavStopListMessageLoadingAlternative">
+  Loading favorites...
+</div>
 <ul *ngIf="favoriteStops() as favoriteStops">
   <li *ngFor="let favoriteStop of favoriteStops">
     {{ favoriteStop.haltestellenname }}
   </li>
-  <li *ngIf="!loading() && !favoriteStops.length">
-    Keine Favoriten gespeichert
+  <li
+    *ngIf="!loading() && !favoriteStops.length"
+    i18n="@@FavStopListMessageNoneStoredAlternative"
+  >
+    No favorites stored
   </li>
 </ul>
 } @else {
-<button mat-raised-button (click)="showSimpleList = true">
-  Auch als einfache Liste anzeigen
+<button
+  mat-raised-button
+  (click)="showSimpleList = true"
+  i18n="@@FavStopListButtonShowAsSimpleList"
+>
+  Show as simple list, too
 </button>
 }

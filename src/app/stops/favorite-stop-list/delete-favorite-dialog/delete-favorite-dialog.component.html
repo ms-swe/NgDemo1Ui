@@ -1,12 +1,26 @@
-<h1 mat-dialog-title>Favoriten löschen</h1>
+<h1 mat-dialog-title i18n="@@DeleteFavDialogHeader">Delete favorite</h1>
 
 <mat-dialog-content class="mat-typography">
-  <p>Möchtest Du '{{ data.haltestellenname }}' wirklich löschen?</p>
+  <p i18n="@@DeleteFavDialogMessageConfirm">
+    Do you really want to delete '{{ data.haltestellenname }}' ?
+  </p>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close cdkFocusInitial>Nein</button>
-  <button mat-raised-button color="warn" [mat-dialog-close]="true">
-    Löschen
+  <button
+    mat-raised-button
+    mat-dialog-close
+    cdkFocusInitial
+    i18n="@@DeleteFavDialogButtonNo"
+  >
+    No
+  </button>
+  <button
+    mat-raised-button
+    color="warn"
+    [mat-dialog-close]="true"
+    i18n="@@DeleteFavDialogButtonDelete"
+  >
+    Delete
   </button>
 </mat-dialog-actions>
