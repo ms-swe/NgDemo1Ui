@@ -86,6 +86,7 @@
 
 .map-div-selected-stop {
   position: absolute;
+  transform: translate(-50%, -100%); // anchor point horz=center/vert=bottom
 }
 
 .map-image-selected-stop {

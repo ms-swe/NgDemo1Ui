@@ -151,8 +151,8 @@ export class MapComponent {
   }
 
   updateSelectedStopsInMap() {
-    const mapDivStopOffsetHorz = 0;
-    const mapDivStopOffsetVert = 0;
+    const mapDivStopOffsetHorzPercent = -1;
+    const mapDivStopOffsetVertPercent = 1;
 
     const mapMinLon = 11.024; // west
     const mapMaxLon = 11.138; // east
@@ -165,34 +165,34 @@ export class MapComponent {
           'vgnKennung-' + val.vgnKennung == selectedStopRef.nativeElement.id
       );
       if (correspondingfavoriteStop) {
-        console.log(correspondingfavoriteStop.latitude);
-        console.log(mapMinLat);
-        console.log(mapMaxLat);
-
         let xPercent =
           (100 * (correspondingfavoriteStop.longitude! - mapMinLon)) /
           (mapMaxLon - mapMinLon);
+
         let yPercent =
           (100 * (correspondingfavoriteStop.latitude! - mapMinLat)) /
           (mapMaxLat - mapMinLat);
-        console.log(yPercent);
 
-        if (xPercent > 100) {
-          xPercent = 105;
-        }
-        if (yPercent > 100) {
-          yPercent = 105;
-        }
+        console.log('lonStop', correspondingfavoriteStop.longitude);
+        console.log('lonMin', mapMinLon);
+        console.log('lonMax', mapMaxLon);
+        console.log('xPercent=', xPercent);
+
+        console.log('latStop', correspondingfavoriteStop.latitude);
+        console.log('latMin', mapMinLat);
+        console.log('latMax', mapMaxLat);
+        console.log('yPercent=', yPercent);
+
         this.renderer.setStyle(
           selectedStopRef.nativeElement,
           'left',
-          `calc(${xPercent}% - ${mapDivStopOffsetHorz}px)`
+          `calc(${xPercent}% + ${mapDivStopOffsetHorzPercent}%)`
         );
 
         this.renderer.setStyle(
           selectedStopRef.nativeElement,
           'top',
-          `calc(${yPercent}% - ${mapDivStopOffsetVert}px)`
+          `calc(${yPercent}% + ${mapDivStopOffsetVertPercent}%)`
         );
       }
     });
