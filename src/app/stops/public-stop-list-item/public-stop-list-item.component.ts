@@ -9,6 +9,8 @@ import {
 } from '@angular/material/slide-toggle';
 import { NgIf, NgFor, DecimalPipe } from '@angular/common';
 import { getLocalizedProduct } from '../shared/Product';
+import { LonLatExtDirective } from '../shared/lon-lat-ext.directive';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'nd-public-stop-list-item',
@@ -24,6 +26,8 @@ import { getLocalizedProduct } from '../shared/Product';
     MatIconModule,
     MatChipsModule,
     MatSnackBarModule,
+    MatTooltipModule,
+    LonLatExtDirective,
   ],
 })
 export class PublicStopListItemComponent {

@@ -56,6 +56,20 @@
         <td mat-cell *matCellDef="let row">{{ row.vgnKennung }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="position">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          i18n="@@FavStopListColHeaderPosition"
+        >
+          Position
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ [row.longitude, row.latitude] | lonlat }}
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="delete">
         <th
           mat-header-cell

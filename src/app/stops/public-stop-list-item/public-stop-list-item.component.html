@@ -4,12 +4,12 @@
     <mat-icon *ngIf="isFavorite">favorite</mat-icon>
   </mat-card-header>
   <mat-card-content>
-    <p>
-      lon={{ longitude | number : "1.3-6" }} / lat={{
-        latitude | number : "1.3-6"
-      }}
-    </p>
-    <mat-chip-set class="chip-area">
+    <p [ndLonLatExt]="[longitude, latitude]"></p>
+    <mat-chip-set
+      class="chip-area"
+      matTooltip="Products at this stop"
+      i18n-matTooltip="@@PublicStopListItemProducts"
+    >
       <mat-chip *ngFor="let produkt of getProducts()">{{ produkt }}</mat-chip>
     </mat-chip-set>
   </mat-card-content>

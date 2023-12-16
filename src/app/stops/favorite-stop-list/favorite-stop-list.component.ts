@@ -17,10 +17,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DeleteFavoriteDialogComponent } from './delete-favorite-dialog/delete-favorite-dialog.component';
+import { LonLatPipe } from '../shared/lon-lat.pipe';
 
 @Component({
   selector: 'nd-favorite-stop-list',
   standalone: true,
+  templateUrl: './favorite-stop-list.component.html',
+  styleUrls: ['./favorite-stop-list.component.scss'],
   imports: [
     CommonModule,
     MatTableModule,
@@ -30,9 +33,8 @@ import { DeleteFavoriteDialogComponent } from './delete-favorite-dialog/delete-f
     MatSortModule,
     MatIconModule,
     MatDialogModule,
+    LonLatPipe,
   ],
-  templateUrl: './favorite-stop-list.component.html',
-  styleUrls: ['./favorite-stop-list.component.scss'],
 })
 export class FavoriteStopListComponent {
   private facade = inject(stopsFacade);
@@ -40,7 +42,12 @@ export class FavoriteStopListComponent {
   favoriteStops = this.facade.favoriteStops;
   loading = this.facade.loadingFavoriteStops;
 
-  displayedColumns: string[] = ['haltestellenname', 'vgnKennung', 'delete'];
+  displayedColumns: string[] = [
+    'haltestellenname',
+    'vgnKennung',
+    'position',
+    'delete',
+  ];
 
   dataSource = new MatTableDataSource<FavoriteStop>([]);
 

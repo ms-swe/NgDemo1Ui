@@ -11,4 +11,5 @@
 
 .chip-area {
   min-height: 2.5em;
+  display: inline-flex; // to restrict the width to the actually required width (according to contained chips); otherwise the tooltip is too far on the right on larger screens
 }

@@ -16,6 +16,8 @@
     "HomeItem5": "Lazy Loading",
     "HomeItem6": "Angular Material",
     "HomeItem7": "Dynamische DOM-Manipulation",
+    "HomeItem8": "Lokalisierung",
+    "HomeItem9": "Eigene Pipe und Direktive",
     "HomeInstruction": " Verwenden Sie das Menü, um durch die Demo zu navigieren\n",
     "Play0TabPlay1": "Spielplatz 1",
     "Play0TabPlay3": "Spielplatz 3",
@@ -44,6 +46,7 @@
     "FavStopListFilterPlaceholder": "Bahnhof",
     "FavStopListColHeaderName": " Name ",
     "FavStopListColHeaderVgnKennung": " VGN Kennung ",
+    "FavStopListColHeaderPosition": "Position",
     "FavStopListColHeaderDelete": " Löschen ",
     "FavStopListFilterNoData": " Keine Daten für den Filter gefunden: \"{$INTERPOLATION}\" ",
     "FavStopListHeaderAlternativeList": "Alternative, einfache Liste:",
@@ -61,6 +64,7 @@
     "MapToggleEffect1": " halbtransparent ",
     "MapToggleEffect2": " gefiltert ",
     "PublicStopListItemIsFavorite": " Favorit ",
+    "PublicStopListItemProducts": "Produkte an dieser Haltestelle",
     "PublicStopListMessageLoading": " Haltestellen werden geladen...\n",
     "PublicStopListNoStopsFound": " Keine Haltestellen gefunden ",
     "PublicStopSearchHeader": "Haltestellen suchen",
@@ -75,6 +79,9 @@
     "FormErrorsTitle": "Fehler",
     "ProductBus": "Bus",
     "ProductTram": "Tram",
-    "ProductUnderground": "U-Bahn"
+    "ProductUnderground": "U-Bahn",
+    "LonLatPipeLonAndLat": "Länge: {$PH} / Breite: {$PH_1}",
+    "LonLatDirectiveLon": "Länge: {$PH}",
+    "LonLatDirectiveLat": "Breite: {$PH}"
   }
 }
