@@ -1,15 +1,8 @@
-import {
-  AfterViewInit,
-  Component,
-  ViewChild,
-  effect,
-  inject,
-} from '@angular/core';
+import { Component, ViewChild, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { stopsFacade } from '../data/stops.facade';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { FavoriteStop } from 'src/app/data-model/favoriteStop';
-import { interval, take } from 'rxjs';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -74,11 +67,15 @@ export class FavoriteStopListComponent {
   }
 
   deleteFavoriteStop(row: FavoriteStop) {
+    console.log('deleteFavoriteStop 1');
+
     const dialogRef = this.dialog.open(DeleteFavoriteDialogComponent, {
       width: '80%',
       maxWidth: '600px',
       data: { haltestellenname: row.haltestellenname },
     });
+
+    console.log('deleteFavoriteStop 2');
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {

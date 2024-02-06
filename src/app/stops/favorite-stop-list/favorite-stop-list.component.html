@@ -90,7 +90,7 @@
 
       <tr class="mat-row" *matNoDataRow>
         <td
-          *ngIf="!loading() && favoriteStops.length"
+          *ngIf="!loading() && favoriteStops().length"
           class="mat-cell"
           colspan="4"
           i18n="@@FavStopListFilterNoData"
