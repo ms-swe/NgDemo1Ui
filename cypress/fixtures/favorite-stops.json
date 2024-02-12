@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "priority": 2,
+    "vgnKennung": "123",
+    "Longitude": 11.084942406952,
+    "Latitude": 49.4633461468799,
+    "Produkte": "Bus,UBahn",
+    "haltestellenname": "Haltestelle1 (Stadt1)"
+  },
+  {
+    "id": 33,
+    "priority": 2,
+    "vgnKennung": "333",
+    "Longitude": 33.084942406952,
+    "Latitude": 33.4633461468799,
+    "Produkte": "Pferdebahn",
+    "haltestellenname": "Haltestelle333 (Fürth)"
+  }
+]

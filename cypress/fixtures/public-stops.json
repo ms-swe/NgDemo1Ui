@@ -1,0 +1,24 @@
+{
+  "Metadata": {
+    "Version": "Puls-API-v1.2.3",
+    "Timestamp": "2024-02-08T22:37:16+01:00"
+  },
+  "Haltestellen": [
+    {
+      "Haltestellenname": "Haltestelle1 (Stadt1)",
+      "VAGKennung": "HS1, S1",
+      "VGNKennung": 123,
+      "Longitude": 11.084942406952,
+      "Latitude": 49.4633461468799,
+      "Produkte": "Bus,UBahn"
+    },
+    {
+      "Haltestellenname": "Haltestelle2 (Stadt2)",
+      "VAGKennung": "HS2",
+      "VGNKennung": 456,
+      "Longitude": 11.0830983746598,
+      "Latitude": 49.4608858514705,
+      "Produkte": "Bus"
+    }
+  ]
+}
