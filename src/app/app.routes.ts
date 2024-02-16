@@ -10,6 +10,11 @@ export const APP_ROUTES: Routes = [
       import('./stops/stops.routes').then((m) => m.STOPS_ROUTES),
   },
   {
+    path: 'drawing',
+    loadChildren: () =>
+      import('./drawing/drawing.routes').then((m) => m.DRAWING_ROUTES),
+  },
+  {
     path: 'playground',
     loadChildren: () =>
       import('./playground/playground.routes').then((m) => m.PLAYGROUND_ROUTES),
