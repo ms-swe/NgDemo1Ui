@@ -1,31 +1,28 @@
-<div *ngIf="loading()" i18n="@@PublicStopListMessageLoading">
-  Loading stops...
-</div>
-<section class="public-stop-list" *ngIf="publicStops">
-  <div *ngFor="let publicStop of publicStops()">
-    <nd-public-stop-list-item
-      [haltestellenname]="publicStop.Haltestellenname"
-      [longitude]="publicStop.Longitude!"
-      [latitude]="publicStop.Latitude!"
-      [produkte]="publicStop.Produkte!"
-      [isFavorite]="isFavorite(publicStop.VGNKennung ?? 0)()"
-      [isFavoriteChangeable]="true"
-      (favoriteChanged)="
-        changeFavorite(
-          publicStop.VGNKennung!,
-          publicStop.Haltestellenname,
-          publicStop.Longitude!,
-          publicStop.Latitude!,
-          publicStop.Produkte!,
-          $event
-        )
-      "
-    ></nd-public-stop-list-item>
-  </div>
-  <div
-    *ngIf="!loading() && !publicStops().length"
-    i18n="@@PublicStopListNoStopsFound"
-  >
-    No stops found
-  </div>
+@if(loading()) {
+<div i18n="@@PublicStopListMessageLoading">Loading stops...</div>
+} @if("publicStops") {
+<section class="public-stop-list">
+  @for (publicStop of publicStops(); track publicStop.VGNKennung) {
+  <nd-public-stop-list-item
+    [haltestellenname]="publicStop.Haltestellenname"
+    [longitude]="publicStop.Longitude!"
+    [latitude]="publicStop.Latitude!"
+    [produkte]="publicStop.Produkte!"
+    [isFavorite]="isFavorite(publicStop.VGNKennung ?? 0)()"
+    [isFavoriteChangeable]="true"
+    (favoriteChanged)="
+      changeFavorite(
+        publicStop.VGNKennung!,
+        publicStop.Haltestellenname,
+        publicStop.Longitude!,
+        publicStop.Latitude!,
+        publicStop.Produkte!,
+        $event
+      )
+    "
+  ></nd-public-stop-list-item>
+  } @if (!loading() && !publicStops().length) {
+  <div i18n="@@PublicStopListNoStopsFound">No stops found</div>
+  }
 </section>
+}

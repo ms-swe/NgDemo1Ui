@@ -1,7 +1,9 @@
 <mat-card class="card">
   <mat-card-header class="card-header">
     <mat-card-title>{{ haltestellenname }}</mat-card-title>
-    <mat-icon *ngIf="isFavorite">favorite</mat-icon>
+    @if(isFavorite) {
+    <mat-icon>favorite</mat-icon>
+    }
   </mat-card-header>
   <mat-card-content>
     <p [ndLonLatExt]="[longitude, latitude]"></p>
@@ -9,11 +11,13 @@
       class="chip-area"
       matTooltip="Products at this stop"
       i18n-matTooltip="@@PublicStopListItemProducts"
-    >
-      <mat-chip *ngFor="let produkt of getProducts()">{{ produkt }}</mat-chip>
+      >@for(product of getProducts(); track product) {
+      <mat-chip>{{ product }}</mat-chip>
+      }
     </mat-chip-set>
   </mat-card-content>
-  <mat-card-actions *ngIf="isFavoriteChangeable">
+  @if(isFavoriteChangeable) {
+  <mat-card-actions>
     <mat-slide-toggle
       [checked]="isFavorite"
       (change)="changeFavorite($event)"
@@ -22,4 +26,5 @@
       Favorite
     </mat-slide-toggle>
   </mat-card-actions>
+  }
 </mat-card>
