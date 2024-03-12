@@ -3,13 +3,14 @@ import { PublicStopListItemComponent } from '../public-stop-list-item/public-sto
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { stopsFacade } from '../data/stops.facade';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'nd-public-stop-list',
   templateUrl: './public-stop-list.component.html',
   styleUrls: ['./public-stop-list.component.scss'],
   standalone: true,
-  imports: [PublicStopListItemComponent, NgIf, NgFor, AsyncPipe],
+  imports: [PublicStopListItemComponent, NgIf, NgFor, AsyncPipe, RouterLink],
 })
 export class PublicStopListComponent {
   private facade = inject(stopsFacade);
@@ -46,5 +47,12 @@ export class PublicStopListComponent {
     } else {
       this.facade.deleteFavoriteStop(vgnKennung);
     }
+  }
+
+  extractPath(path: string) {
+    // Workaround: the public API has a problem with Umlaute and special characters...
+    // Just a hack here, because it's not a productive application
+    const i = path.indexOf(' ');
+    return path.slice(0, i);
   }
 }

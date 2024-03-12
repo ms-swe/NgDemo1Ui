@@ -1,0 +1,12 @@
+@if(loading()) { Loading... } @else if(publicStop()) {
+<section class="public-stop-list">
+  <nd-public-stop-list-item
+    [haltestellenname]="publicStop()!.Haltestellenname"
+    [longitude]="publicStop()!.Longitude!"
+    [latitude]="publicStop()!.Latitude!"
+    [produkte]="publicStop()!.Produkte!"
+    [isFavorite]="isFavorite(publicStop()!.VGNKennung ?? 0)()"
+    [isFavoriteChangeable]="false"
+  ></nd-public-stop-list-item>
+</section>
+} @else { Public Stop '{{ name }}' not found! }

@@ -3,24 +3,34 @@
 } @if("publicStops") {
 <section class="public-stop-list">
   @for (publicStop of publicStops(); track publicStop.VGNKennung) {
-  <nd-public-stop-list-item
-    [haltestellenname]="publicStop.Haltestellenname"
-    [longitude]="publicStop.Longitude!"
-    [latitude]="publicStop.Latitude!"
-    [produkte]="publicStop.Produkte!"
-    [isFavorite]="isFavorite(publicStop.VGNKennung ?? 0)()"
-    [isFavoriteChangeable]="true"
-    (favoriteChanged)="
-      changeFavorite(
-        publicStop.VGNKennung!,
-        publicStop.Haltestellenname,
-        publicStop.Longitude!,
-        publicStop.Latitude!,
-        publicStop.Produkte!,
-        $event
-      )
-    "
-  ></nd-public-stop-list-item>
+
+  <a
+    [routerLink]="[
+      '/',
+      'stops',
+      'public-stop',
+      extractPath(publicStop.Haltestellenname)
+    ]"
+  >
+    <nd-public-stop-list-item
+      [haltestellenname]="publicStop.Haltestellenname"
+      [longitude]="publicStop.Longitude!"
+      [latitude]="publicStop.Latitude!"
+      [produkte]="publicStop.Produkte!"
+      [isFavorite]="isFavorite(publicStop.VGNKennung ?? 0)()"
+      [isFavoriteChangeable]="true"
+      (favoriteChanged)="
+        changeFavorite(
+          publicStop.VGNKennung!,
+          publicStop.Haltestellenname,
+          publicStop.Longitude!,
+          publicStop.Latitude!,
+          publicStop.Produkte!,
+          $event
+        )
+      "
+    ></nd-public-stop-list-item
+  ></a>
   } @if (!loading() && !publicStops().length) {
   <div i18n="@@PublicStopListNoStopsFound">No stops found</div>
   }
